@@ -1,9 +1,17 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.TestCodeAsp" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<resources>
+    <style name="Theme.TestCodeAsp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/accent</item>
+        <item name="colorPrimaryVariant">@color/accent_dark</item>
+        <item name="colorSecondary">@color/accent</item>
+        <item name="colorSurface">@color/glass_fill</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        <item name="android:fontFamily">sans</item>
+        <item name="android:statusBarColor">@color/screen_start</item>
+        <item name="android:navigationBarColor">@color/screen_end</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:windowBackground">@drawable/bg_screen_gradient</item>
     </style>
-
-    <style name="Theme.TestCodeAsp" parent="Base.Theme.TestCodeAsp" />
 </resources>

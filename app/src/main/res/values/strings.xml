@@ -1,3 +1,45 @@
 <resources>
     <string name="app_name">TestCodeAsp</string>
+    <string name="brand_tagline">A beautiful place for your favorite reads.</string>
+    <string name="welcome_badge">YOUR READING SPACE</string>
+    <string name="welcome_title">Read. Save. Revisit.</string>
+    <string name="welcome_subtitle">Keep what inspires you, whenever you need it.</string>
+    <string name="login_heading">Welcome back</string>
+    <string name="login_subtitle">Sign in with any non-empty username and password.</string>
+    <string name="username_hint">Username</string>
+    <string name="password_hint">Password</string>
+    <string name="sign_in">Explore posts</string>
+    <string name="username_required">Username is required</string>
+    <string name="password_required">Password is required</string>
+    <string name="session_expired">You have been logged out after 180 seconds of inactivity.</string>
+    <string name="secure_session_hint">Your session is protected by an inactivity timer.</string>
+    <string name="hello_user">Hello, %1$s 👋</string>
+    <string name="dashboard_title">Discover</string>
+    <string name="discover_tag">THE DAILY EDIT</string>
+    <string name="discover_title">Find your next favorite.</string>
+    <string name="discover_subtitle">Explore stories, bookmark the moments that matter.</string>
+    <string name="saved_title">Your bookmarks</string>
+    <string name="saved_subtitle">Good stories are worth keeping.</string>
+    <string name="tab_explore">Explore</string>
+    <string name="tab_saved">Saved</string>
+    <string name="logout">Log out</string>
+    <string name="button_retry">Try again</string>
+    <string name="network_error_title">Couldn’t load posts</string>
+    <string name="network_error_help">Check your connection and try again.</string>
+    <string name="empty_posts_title">Nothing here yet</string>
+    <string name="empty_posts_desc">Pull down to refresh the feed.</string>
+    <string name="empty_saved_title">Your collection starts here</string>
+    <string name="empty_saved_desc">Tap the bookmark on any post to keep it here, even offline.</string>
+    <string name="browse_posts">Browse posts</string>
+    <string name="post_number">POST %1$d</string>
+    <string name="save_bookmark">Save bookmark</string>
+    <string name="remove_bookmark">Remove bookmark</string>
+    <string name="offline_cached">Offline: showing previously cached posts.</string>
+    <string name="bookmark_failed">Couldn’t update bookmark. Please try again.</string>
+    <string name="bookmark_load_failed">Couldn’t read your saved posts.</string>
+    <string name="footer_note">MADE TO COLLECT WHAT MATTERS</string>
+    <plurals name="post_count"><item quantity="one">%d story</item><item quantity="other">%d stories</item></plurals>
+    <plurals name="saved_count"><item quantity="one">%d saved story</item><item quantity="other">%d saved stories</item></plurals>
+    <string name="change_language">Change language</string>
+    <string name="post_image">Illustration for post %1$d</string>
 </resources>

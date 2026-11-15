@@ -1,5 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="screen_start">#EFF4FF</color>
+    <color name="screen_middle">#F9FBFF</color>
+    <color name="screen_end">#E7ECFA</color>
+    <color name="glass_fill">#DDFEFFFF</color>
+    <color name="glass_border">#FCFFFFFF</color>
+    <color name="text_primary">#233153</color>
+    <color name="text_secondary">#65748F</color>
+    <color name="accent">#687DE3</color>
+    <color name="accent_dark">#455BC2</color>
+    <color name="soft_accent">#D8DFFF</color>
+    <color name="hint_surface">#BDF3F6FF</color>
+    <color name="separator">#B1C4E5</color>
+    <color name="pure_white">#FFFFFF</color>
 </resources>
