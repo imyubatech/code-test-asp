@@ -215,7 +215,7 @@
                 android:paddingEnd="26dp"
                 android:background="@drawable/bg_primary_button"
                 android:backgroundTint="@null"
-                android:allCaps="false"
+                android:textAllCaps="false"
                 android:text="@string/button_retry"
                 android:textColor="@color/pure_white"/>
         </LinearLayout>

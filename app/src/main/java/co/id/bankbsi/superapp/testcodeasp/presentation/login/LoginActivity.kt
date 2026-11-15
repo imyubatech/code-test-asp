@@ -3,6 +3,7 @@ package co.id.bankbsi.superapp.testcodeasp.presentation.login
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.widget.doAfterTextChanged
 import co.id.bankbsi.superapp.testcodeasp.R
 import co.id.bankbsi.superapp.testcodeasp.databinding.ActivityLoginBinding
@@ -15,8 +16,10 @@ class LoginActivity : BaseActivity(), LoginContract.View {
     private lateinit var presenter: LoginPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
         if (app.sessionManager.isActive()) {
+            splashScreen.setKeepOnScreenCondition { true }
             openDashboard()
             return
         }

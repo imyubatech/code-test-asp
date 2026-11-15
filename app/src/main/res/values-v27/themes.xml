@@ -1,0 +1,5 @@
+<resources>
+    <style name="Theme.TestCodeAsp" parent="Theme.TestCodeAsp.Base">
+        <item name="android:windowLightNavigationBar">true</item>
+    </style>
+</resources>

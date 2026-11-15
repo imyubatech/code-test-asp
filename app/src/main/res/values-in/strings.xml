@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TestCodeAsp</string>
+    <string name="brand_tagline">Tempat nyaman untuk menikmati bacaan favoritmu.</string>
+    <string name="welcome_badge">RUANG BACA ANDA</string>
+    <string name="welcome_title">Baca. Simpan. Baca Kembali.</string>
+    <string name="welcome_subtitle">Simpan hal-hal yang menginspirasi dan nikmati kembali kapan pun kamu membutuhkannya.</string>
+    <string name="login_heading">Selamat Datang Kembali</string>
+    <string name="login_subtitle">Masuk menggunakan nama pengguna dan kata sandi yang tidak boleh kosong.</string>
+    <string name="username_hint">Nama Pengguna</string>
+    <string name="password_hint">Kata Sandi</string>
+    <string name="sign_in">Jelajahi Artikel</string>
+    <string name="username_required">Nama pengguna wajib diisi.</string>
+    <string name="password_required">Kata sandi wajib diisi.</string>
+    <string name="session_expired">Sesi Anda telah berakhir karena tidak ada aktivitas selama 180 detik.</string>
+    <string name="secure_session_hint">Sesi Anda dilindungi oleh sistem batas waktu berdasarkan aktivitas.</string>
+    <string name="hello_user">Halo, %1$s 👋</string>
+    <string name="dashboard_title">Jelajahi</string>
+    <string name="discover_tag">PILIHAN HARI INI</string>
+    <string name="discover_title">Temukan bacaan favorit Anda berikutnya.</string>
+    <string name="discover_subtitle">Jelajahi berbagai artikel dan simpan bacaan yang menarik bagi Anda.</string>
+    <string name="saved_title">Artikel Tersimpan</string>
+    <string name="saved_subtitle">Bacaan menarik selalu layak untuk disimpan.</string>
+    <string name="tab_explore">Jelajahi</string>
+    <string name="tab_saved">Tersimpan</string>
+    <string name="logout">Keluar</string>
+    <string name="button_retry">Coba Lagi</string>
+    <string name="network_error_title">Gagal Memuat Artikel</string>
+    <string name="network_error_help">Periksa koneksi internet Anda, lalu coba lagi.</string>
+    <string name="empty_posts_title">Belum Ada Artikel</string>
+    <string name="empty_posts_desc">Tarik layar ke bawah untuk memuat ulang daftar artikel.</string>
+    <string name="empty_saved_title">Mulai Koleksi Bacaan Anda</string>
+    <string name="empty_saved_desc">Ketuk ikon bookmark pada artikel untuk menyimpannya di sini, bahkan saat offline.</string>
+    <string name="browse_posts">Jelajahi Artikel</string>
+    <string name="post_number">ARTIKEL %1$d</string>
+    <string name="save_bookmark">Simpan Bookmark</string>
+    <string name="remove_bookmark">Hapus Bookmark</string>
+    <string name="offline_cached">Offline: menampilkan artikel yang tersimpan sebelumnya.</string>
+    <string name="bookmark_failed">Gagal memperbarui bookmark. Silakan coba lagi.</string>
+    <string name="bookmark_load_failed">Gagal memuat artikel yang tersimpan.</string>
+    <string name="footer_note">DIBUAT UNTUK MENYIMPAN HAL YANG BERARTI</string>
+    <plurals name="post_count"><item quantity="one">%d artikel</item><item quantity="other">%d artikel</item></plurals>
+    <plurals name="saved_count"><item quantity="one">%d artikel tersimpan</item><item quantity="other">%d artikel tersimpan</item></plurals>
+    <string name="change_language">Ganti Bahasa</string>
+    <string name="post_image">Ilustrasi untuk artikel %1$d</string>
+    <string name="changing_language" translatable="false">Mengganti bahasa…</string>
+
+</resources>

@@ -42,4 +42,5 @@
     <plurals name="saved_count"><item quantity="one">%d saved story</item><item quantity="other">%d saved stories</item></plurals>
     <string name="change_language">Change language</string>
     <string name="post_image">Illustration for post %1$d</string>
+    <string name="changing_language" translatable="false">Changing language…</string>
 </resources>

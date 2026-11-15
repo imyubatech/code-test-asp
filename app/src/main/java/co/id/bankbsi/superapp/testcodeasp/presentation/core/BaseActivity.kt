@@ -1,6 +1,9 @@
 package co.id.bankbsi.superapp.testcodeasp.presentation.core
 
 import android.content.Intent
+import android.content.res.Configuration
+import androidx.appcompat.app.AlertDialog
+import co.id.bankbsi.superapp.testcodeasp.R
 import android.view.KeyEvent
 import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
@@ -12,11 +15,14 @@ import co.id.bankbsi.superapp.testcodeasp.presentation.login.LoginActivity
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlin.time.Duration.Companion.seconds
 
 abstract class BaseActivity : AppCompatActivity() {
     protected val app: TestCodeAspApp get() = application as TestCodeAspApp
     protected open val sessionRequired: Boolean = false
 
+    private var languageDialog: AlertDialog? = null
+    private var languageChangeJob: Job? = null
     private var expiryJob: Job? = null
     private var redirectingToLogin = false
 
@@ -32,6 +38,9 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
+        languageChangeJob?.cancel()
+        languageDialog?.dismiss()
+        languageDialog = null
         expiryJob?.cancel()
         expiryJob = null
         super.onDestroy()
@@ -83,10 +92,26 @@ abstract class BaseActivity : AppCompatActivity() {
         }
     }
 
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        // Also handle hosts that apply the locale without recreating the Activity.
+        languageDialog?.dismiss()
+        languageDialog = null
+    }
+
     protected fun toggleLanguage() {
+        if (languageDialog != null || isFinishing || isDestroyed) return
         val currentLanguage = resources.configuration.locales[0].language
         val nextLanguage = if (currentLanguage == "id" || currentLanguage == "in") "en" else "id"
-        AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(nextLanguage))
+        languageDialog = AlertDialog.Builder(this)
+            .setView(R.layout.dialog_language_loading)
+            .setCancelable(false)
+            .create()
+            .also { it.show() }
+        languageChangeJob = lifecycleScope.launch {
+            delay(1.seconds)
+            AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(nextLanguage))
+        }
     }
 
     protected fun logout() = navigateToLogin(timedOut = false)

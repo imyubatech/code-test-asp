@@ -15,7 +15,9 @@
         android:theme="@style/Theme.TestCodeAsp">
         <activity android:name=".presentation.bookmark.BookmarkActivity" android:exported="false" />
         <activity android:name=".presentation.dashboard.DashboardActivity" android:exported="false" />
-        <activity android:name=".presentation.login.LoginActivity" android:exported="true">
+        <activity android:name=".presentation.login.LoginActivity"
+            android:theme="@style/Theme.TestCodeAsp.Starting"
+            android:exported="true">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
