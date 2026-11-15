@@ -16,7 +16,7 @@ class TestCodeAspApp: Application() {
     val sessionManager: SessionManager by lazy { SessionManager(applicationContext) }
 
     private val database: AppDatabase by lazy {
-        Room.databaseBuilder(applicationContext, AppDatabase::class.java, "glassmark.db")
+        Room.databaseBuilder(applicationContext, AppDatabase::class.java, "testcodeasp.db")
             .build()
     }
 

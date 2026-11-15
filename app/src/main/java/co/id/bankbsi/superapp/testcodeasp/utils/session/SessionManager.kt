@@ -6,7 +6,7 @@ import android.provider.Settings
 
 class SessionManager(context: Context) {
     private val appContext = context.applicationContext
-    private val prefs = appContext.getSharedPreferences("glassmark_session", Context.MODE_PRIVATE)
+    private val prefs = appContext.getSharedPreferences("testcodeasp_session", Context.MODE_PRIVATE)
 
     private var lastPersistedElapsed: Long = -1L
 
@@ -47,7 +47,6 @@ class SessionManager(context: Context) {
 
     fun isActive(): Boolean = remainingMs() > 0L
 
-    /** Throttle database-free preference writes during continuous MOVE events. */
     fun recordInteraction(): Boolean {
         if (!isActive()) return false
         val now = SystemClock.elapsedRealtime()

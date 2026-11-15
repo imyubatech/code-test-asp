@@ -21,7 +21,6 @@ class PostRepository(
     fun observeBookmarks() = bookmarkDao.observeAll().map { rows -> rows.map { it.toPost() } }
     fun observeBookmarkIds() = bookmarkDao.observeIds().map { it.toSet() }
 
-    /** Returns data for immediate rendering, AND persists it for offline observation. */
     suspend fun refreshPosts(): List<Post> {
         val posts = api.getPosts()
         postDao.upsert(posts.map { it.toEntity() })
@@ -39,7 +38,6 @@ class PostRepository(
         }
     }
 
-    /** Idempotent removal avoids accidental re-add on repeated taps in Saved screen. */
     suspend fun removeBookmark(postId: Int) = bookmarkMutex.withLock {
         bookmarkDao.deleteById(postId)
     }
