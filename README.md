@@ -10,7 +10,7 @@ Aplikasi Android sederhana untuk menjelajahi posting, menyimpan bacaan favorit, 
 - **Bookmark lokal** — menyimpan dan menghapus posting favorit melalui database Room.
 - **Cache posting** — menampilkan data yang pernah dimuat ketika pembaruan dari jaringan gagal.
 - **Penanganan kondisi halaman** — indikator loading, daftar kosong, pesan koneksi gagal, dan tombol coba lagi.
-- **Sesi pengguna** — login tetap aktif selama belum melewati batas 10 detik tanpa interaksi; sesi yang kedaluwarsa diarahkan kembali ke login.
+- **Sesi pengguna** — login tetap aktif selama belum melewati batas 180 detik tanpa interaksi; sesi yang kedaluwarsa diarahkan kembali ke login.
 - **Toggle EN/ID** — penggantian locale dengan dialog progress untuk mencegah klik berulang selama perubahan berlangsung.
 - **Splash screen** — menggunakan AndroidX SplashScreen dan langsung menuju dashboard jika sesi masih aktif.
 - **Tampilan liquid glass** — kartu transparan, latar gradasi, dan ikon bookmark dengan aksen aqua–indigo.
@@ -64,7 +64,7 @@ Membuka daftar artikel tersimpan dan menghapus bookmark.
 
 ### 6. Session timeout saat aplikasi terbuka
 
-Perpindahan dari dashboard ke halaman login ketika tidak ada interaksi. Konfigurasi kode saat ini menggunakan timeout **10 detik** (`SessionTimeoutPolicy.TIMEOUT_MS = 10_000L`). Rekaman pendek ini menampilkan bagian akhir masa tunggu hingga sesi berakhir.
+Perpindahan dari dashboard ke halaman login ketika tidak ada interaksi. Rekaman ini dibuat saat konfigurasi demo menggunakan timeout **10 detik**. Konfigurasi kode saat ini menggunakan **180 detik** (`SessionTimeoutPolicy.TIMEOUT_MS = 180_000L`). Rekaman pendek ini menampilkan bagian akhir masa tunggu hingga sesi berakhir.
 
 ![Demo session timeout saat aplikasi terbuka](media/demos/session-timeout.gif)
 
@@ -72,7 +72,7 @@ Perpindahan dari dashboard ke halaman login ketika tidak ada interaksi. Konfigur
 
 **Demo belum tersedia.** Rekaman yang ada belum memperlihatkan rangkaian keluar aplikasi, menunggu sesi habis, lalu kembali ke halaman login.
 
-Skenario rekaman: login → tekan Home → tunggu lebih dari 10 detik sejak interaksi terakhir → buka kembali aplikasi → tampilkan halaman login.
+Skenario rekaman: login → tekan Home → tunggu lebih dari 180 detik sejak interaksi terakhir → buka kembali aplikasi → tampilkan halaman login.
 
 <!-- Tambahkan setelah rekaman tersedia:
 ![Demo timeout setelah kembali ke aplikasi](media/demos/session-timeout-background.gif)
@@ -206,7 +206,7 @@ Bookmark disimpan pada tabel terpisah dari cache posting. Operasi perubahan book
 
 ### Sesi pengguna
 
-`SessionManager` menyimpan status login, username, dan waktu interaksi terakhir di SharedPreferences. `SessionTimeoutPolicy` menentukan sisa waktu sesi dengan batas `10_000` milidetik.
+`SessionManager` menyimpan status login, username, dan waktu interaksi terakhir di SharedPreferences. `SessionTimeoutPolicy` menentukan sisa waktu sesi dengan batas `180_000` milidetik.
 
 `BaseActivity` memeriksa sesi saat halaman aktif kembali dan memperbarui waktu interaksi melalui event sentuh atau tombol. Waktu yang dihabiskan di background tetap diperhitungkan. Logout menghapus data sesi dan membersihkan back stack halaman yang memerlukan login.
 
@@ -260,7 +260,19 @@ Laporan pemeriksaan tersedia di:
 - Unit test: `app/build/reports/tests/testDebugUnitTest/index.html`
 - Lint: `app/build/reports/lint-results-debug.html`
 
-Test bawaan saat ini mencakup pemeriksaan dasar JUnit dan identitas package pada perangkat. Pengujian alur login, bookmark, timeout, dan pergantian bahasa masih perlu diperluas.
+Cakupan pengujian:
+
+| Jenis | File | Skenario |
+| --- | --- | --- |
+| Unit | `LoginValidatorTest` | Input kosong, whitespace, kolom wajib, dan kredensial valid |
+| Unit | `SessionTimeoutPolicyTest` | Sisa waktu, batas kedaluwarsa, reboot, dan nilai jam tidak valid |
+| Unit data | `PostRepositoryTest` | Refresh API, cache saat offline, tambah/hapus bookmark, konversi entity, dan toggle bersamaan |
+| Integrasi database | `PostDatabaseTest` | Query Room, urutan data, upsert, ID unik, dan pemisahan cache dari bookmark |
+| UI | `LoginUiTest` | Validasi login kosong, penghapusan error saat mengetik, loading EN/ID, dan locale setelah Activity dibuat ulang |
+
+Unit test repository memakai API dan DAO palsu sehingga tidak memerlukan jaringan atau emulator. Tes database menggunakan Room **in-memory** dan tidak mengubah database aplikasi. Tes UI memerlukan perangkat/emulator; setup menghapus sesi login aplikasi dan cleanup mengembalikan pilihan locale sebelumnya.
+
+Pengujian otomatis belum mencakup seluruh alur dashboard dan bookmark melalui UI, autentikasi backend, maupun timeout setelah aplikasi lama berada di background. Tes timeout saat ini memverifikasi aturan waktunya secara langsung tanpa menunggu 180 detik.
 
 ## Pemecahan masalah
 
@@ -271,7 +283,7 @@ Test bawaan saat ini mencakup pemeriksaan dasar JUnit dan identitas package pada
 | `Permission denied` saat menjalankan wrapper | Jalankan `chmod +x gradlew` pada macOS / Linux |
 | Perangkat tidak muncul | Aktifkan USB debugging dan periksa dengan `adb devices` |
 | Posting gagal dimuat | Koneksi internet, akses layanan publik, dan tombol coba lagi |
-| Kembali ke login setelah aplikasi ditinggalkan | Sesi berakhir setelah 10 detik tanpa interaksi |
+| Kembali ke login setelah aplikasi ditinggalkan | Sesi berakhir setelah 180 detik tanpa interaksi |
 | Teks posting tidak berubah setelah toggle EN/ID | Toggle mengganti bahasa antarmuka; isi posting berasal dari API |
 | Error metadata AndroidX Core | Pertahankan Core 1.17.0 untuk konfigurasi SDK ini; Core 1.19.1 membutuhkan compileSdk 37 |
 
